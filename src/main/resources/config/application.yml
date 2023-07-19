@@ -10,7 +10,7 @@ spring:
   # Database
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/mydb
+    url: jdbc:postgresql://localhost:5432/meva_finance
     username: postgres
     password: postgres
   # JPA properties
