@@ -1,4 +1,4 @@
-package com.meva.finance.api.model.entity;
+package com.meva.finance.api.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,15 +12,15 @@ import static javax.persistence.GenerationType.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "user_meva")
+@Table(name = "family")
 public class Family {
 
    @Id
     @SequenceGenerator(name = "family_id_seq", sequenceName = "family_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = SEQUENCE, generator = "family_id_seq")
     @Column(name = "id_family", updatable = false)
-    private Long id_family;
-     @Column(name = "description", updatable = false)
+    private Long idFamily;
+     @Column(name = "description")
     private String description;
 
     /* @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

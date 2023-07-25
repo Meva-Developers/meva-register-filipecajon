@@ -1,20 +1,21 @@
-package com.meva.finance.api.model.entity;
+package com.meva.finance.api.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "user_meva")
 public class User {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    //criei a coluna sozinho
+    @Column(nullable = false, unique = true, length = 11)
     private String cpf;
     @Column(name = "name")
     private String name;

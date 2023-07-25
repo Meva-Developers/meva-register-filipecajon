@@ -1,7 +1,7 @@
 package com.meva.finance.api.repository;
 
 
-import com.meva.finance.api.model.entity.User;
+import com.meva.finance.api.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
