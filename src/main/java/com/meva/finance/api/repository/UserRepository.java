@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 //Jpa Informo a Classe e o Atributo da classe Primary Key
 @Repository
+
 public interface UserRepository extends JpaRepository<User, String> {
 
 

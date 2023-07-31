@@ -17,7 +17,5 @@ public class UserDto {
     private Date birth;
     private String state;
     private String city;
-
-
     private FamilyDto familyDto;
 }
