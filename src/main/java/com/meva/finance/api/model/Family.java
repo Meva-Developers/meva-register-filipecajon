@@ -1,6 +1,7 @@
 package com.meva.finance.api.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +14,7 @@ import static javax.persistence.GenerationType.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "family")
+@Builder
 public class Family {
 
    @Id

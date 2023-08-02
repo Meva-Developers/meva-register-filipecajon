@@ -1,5 +1,6 @@
 package com.meva.finance.api.model;
 
+import com.meva.finance.api.dto.UserDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -11,24 +12,30 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "user_meva")
+@Builder
 public class User {
 
     @Id
     //criei a coluna sozinho
     @Column(nullable = false, unique = true, length = 11)
     private String cpf;
-    @Column(name = "name")
     private String name;
-    @Column(name = "genre")
     private String genre;
-    @Column(name = "birth")
     private Date birth;
-    @Column(name = "state")
     private String state;
-    @Column(name = "city")
     private String city;
 
     //Referenciando Familia
     @ManyToOne @JoinColumn(name = "id_family")
     private Family family;
+
+    //Convertendo user para userDto
+    public User (UserDto userDto) {
+        this.cpf = userDto.getCpf();
+        this.name = userDto.getName();
+        this.genre = userDto.getGenre();
+        this.birth = userDto.getBirth();
+        this.state = userDto.getState();
+        this.city = userDto.getCity();
+    }
 }

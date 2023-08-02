@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 
 
 @Slf4j
-@RestController("/users")
+@RestController("/users") //controlador REST , recebe
 public class UserController {
 
     //injeção de dependencia do Service
@@ -30,10 +30,8 @@ public class UserController {
 
     @PutMapping("/update")
     public ResponseEntity<UserDto> update(@RequestBody UserDto userDto) {
-        User user = new User();
-        BeanUtils.copyProperties(userDto, user);
         userService.update(userDto);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(userDto);
     }
 
     @DeleteMapping("/delete/{cpf}")

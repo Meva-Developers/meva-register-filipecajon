@@ -57,8 +57,7 @@ public class UserService {
     }
 
     public User update(UserDto userDto) {
-        User user = new User();
-        BeanUtils.copyProperties(userDto, user);
+        User user = userDto.update(userDto);
         return userRepository.save(user);
     }
 
@@ -66,4 +65,6 @@ public class UserService {
     public void delete(String cpf) {
         userRepository.deleteById(cpf);
     }
-}
+
+   }
+
