@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
+import java.util.Optional;
 
 @Service //Entende que é uma classe Service
 @Slf4j
@@ -21,6 +22,7 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final FamilyRepository familyRepository;
+
     @Autowired
     public UserService(UserRepository userRepository, FamilyRepository familyRepository) {
         this.userRepository = userRepository;
@@ -28,7 +30,7 @@ public class UserService {
     }
 
 
-    public String register(UserDto userDto){
+    public String register(UserDto userDto) {
         User user = new User();
         BeanUtils.copyProperties(userDto, user);
 
@@ -40,7 +42,7 @@ public class UserService {
 
         }
         return userRepository.save(user).getCpf();
-      //  return userRepository.save(user);
+        //  return userRepository.save(user);
 
     }
 
@@ -50,7 +52,7 @@ public class UserService {
         if (familyDto.getIdFamily() == 0) {
             return familyRepository.save(family);
         } else if (Objects.isNull(familyRepository.findFamily(familyDto.getIdFamily()))
-                || familyRepository.findFamily(familyDto.getIdFamily()) ==0){
+                || familyRepository.findFamily(familyDto.getIdFamily()) == 0) {
             throw new InvalidFamilyException("Family ID not exist", HttpStatus.BAD_REQUEST);
         }
         return family;
@@ -66,5 +68,8 @@ public class UserService {
         userRepository.deleteById(cpf);
     }
 
-   }
+    public Optional<User> findById(String cpf) {
+        return userRepository.findById(cpf);
+    }
 
+}
